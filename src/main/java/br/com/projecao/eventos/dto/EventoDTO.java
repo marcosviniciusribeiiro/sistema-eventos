@@ -7,13 +7,12 @@ import jakarta.validation.constraints.NotBlank;
 public class EventoDTO {
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "O nome do evento é obrigatório!")
 	private String nome;
 	
-	@NotBlank
+	@NotBlank(message = "A descrição do evento é obrigatória!")
 	private String descricao;
 	
-	@NotBlank
 	private LocalDateTime data;
 
 	public Long getId() {

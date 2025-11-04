@@ -11,7 +11,7 @@ public class LocalDTO {
 	@NotBlank(message = "O endereço do local é obrigatório!")
 	private String endereco;
 	
-	@NotBlank(message = "A capacidade do local tem que ser número positivo!")
+	@NotBlank(message = "A capacidade do local é obrigatório!")
 	private Integer capacidade;
 
 	public Long getId() {

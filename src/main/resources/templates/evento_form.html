@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlsn:th="http://www.thymeleaf.org" lang="pt-br">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Cadastro do Evento</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+	</head>
+	<body class="container mt-5">
+		<h2 class="container text-center">Cadastro do Evento</h2>
+		
+		<form th:action="@{/cadastrar/evento}" th:object="${eventoDTO}" method="post" class="mt-4">
+			<input type="hidden" th:field="*{id}" />
+			
+			<label for="nome" class="form-label">Nome do Evento:</label>
+			<input type="text" th:field="*{nome}" class="form-control" />
+			<div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro</div> <br>
+			
+			<label for="descricao" class="form-label">Descrição do Evento:</label>
+			<input type="text" th:field="*{descricao}" class="form-control" />
+			<div class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}">Erro</div> <br>
+			
+			<label for="data" class="form-label">Data do Evento:</label>
+			<input type="date" th:field="*{data}" class="form-control" />
+			<div class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data">Erro</div> <br>
+			
+			<div class="row container text-center">
+				<div class="col-6">
+					<button type="submit" class="btn btn-success sm-4">Cadastrar</button>
+				</div>
+				<div class="col-6">
+					<a href="@{/cadastrar/evento}" class="btn btn-primary sm-4">Lista de Eventos</a>
+				</div>
+			</div>
+		</form>
+	</body>
+</html>

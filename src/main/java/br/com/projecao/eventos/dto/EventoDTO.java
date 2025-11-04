@@ -9,8 +9,8 @@ public class EventoDTO {
 	
 	@NotBlank(message = "O nome do evento é obrigatório!")
 	private String nome;
-	
-	@NotBlank(message = "A descrição do evento é obrigatória!")
+
+	@NotBlank(message = "A descrição do evento é obrigatório!")
 	private String descricao;
 	
 	private LocalDateTime data;

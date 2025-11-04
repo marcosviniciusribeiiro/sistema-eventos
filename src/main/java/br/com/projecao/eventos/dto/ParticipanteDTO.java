@@ -6,11 +6,11 @@ import jakarta.validation.constraints.NotBlank;
 public class ParticipanteDTO {
 	private Long id;
 	
-	@NotBlank(message = "O nome do participante é obrigatório!")
+	@NotBlank(message = "O nome do participante é obrigatório!")	
 	private String nome;
 	
 	@Email
-	@NotBlank(message = "O email do participante é obrigatório!")
+	@NotBlank(message = "O e-mail do participante é obrigatório!")	
 	private String email;
 
 	public Long getId() {

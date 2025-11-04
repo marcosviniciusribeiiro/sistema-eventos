@@ -33,7 +33,9 @@ public class LocalController {
 		localService.salvarLocal(localDTO);
 		return "redirect:/cadastrar/local";
 	}
+	@GetMapping("/locais")
+	public String listarLocais(Model model) {
+		model.addAttribute("locais", localService.listarLocais());
+		return "locais";
+	}
 }
-/*
-- GET /locais → listar todos os locais
- */

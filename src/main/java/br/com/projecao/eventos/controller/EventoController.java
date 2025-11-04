@@ -19,13 +19,13 @@ public class EventoController {
 		this.eventoService = eventoService;
 	}
 
-	@GetMapping("cadastrar/evento")
+	@GetMapping("/cadastrar/evento")
 	public String formulario(Model model) {
 		model.addAttribute("eventoDTO", new EventoDTO());
 		return "evento_form";
 	}
 	
-	@PostMapping("cadastrar/evento")
+	@PostMapping("/cadastrar/evento")
 	public String cadastrarEvento(@ModelAttribute("eventoDTO") @Valid EventoDTO eventoDTO, BindingResult result) {
 		if(result.hasErrors()) {
 			return "evento_form";

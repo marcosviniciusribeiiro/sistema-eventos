@@ -33,7 +33,10 @@ public class ParticipanteController {
 		participanteService.salvarParticipante(participanteDTO);
 		return "redirect:/cadastrar/participante";
 	}
+	
+	@GetMapping("/participantes")
+	public String listarParticipantes(Model model) {
+		model.addAttribute("participantes", participanteService.listarParticipantes());
+		return "participantes";
+	}
 }
-/*
-- GET /participantes → listar todos os participantes
- */

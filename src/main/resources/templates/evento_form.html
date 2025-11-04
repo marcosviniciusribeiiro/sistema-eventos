@@ -12,16 +12,16 @@
 			<input type="hidden" th:field="*{id}" />
 			
 			<label for="nome" class="form-label">Nome do Evento:</label>
-			<input type="text" th:field="*{nome}" class="form-control" />
+			<input type="text" th:field="*{nome}" class="form-control" required/>
 			<div class="text-danger" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Erro</div> <br>
 			
 			<label for="descricao" class="form-label">Descrição do Evento:</label>
-			<input type="text" th:field="*{descricao}" class="form-control" />
+			<input type="text" th:field="*{descricao}" class="form-control" required/>
 			<div class="text-danger" th:if="${#fields.hasErrors('descricao')}" th:errors="*{descricao}">Erro</div> <br>
 			
 			<label for="data" class="form-label">Data do Evento:</label>
-			<input type="date" th:field="*{data}" class="form-control" />
-			<div class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data">Erro</div> <br>
+			<input type="datetime-local" th:field="*{data}" class="form-control" required/>
+			<div class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}">Erro</div> <br>
 			
 			<div class="row container text-center">
 				<div class="col-6">

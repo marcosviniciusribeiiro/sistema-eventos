@@ -3,9 +3,12 @@ package br.com.projecao.eventos.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import br.com.projecao.eventos.dto.EventoDTO;
 import br.com.projecao.eventos.service.EventoService;
@@ -33,10 +36,30 @@ public class EventoController {
 		eventoService.salvarEvento(eventoDTO);
 		return "redirect:/cadastrar/evento";
 	}
+	
+	@GetMapping("/eventos")
+	public String listarEventos(Model model) {
+		model.addAttribute("eventos", eventoService.listarEventos());
+		return "eventos";
+	}
+	
+	@GetMapping("/eventos/editar/{id}")
+	public String editarEvento(@PathVariable Long id, Model model) {
+		EventoDTO dto = eventoService.buscarPorId(id);
+		model.addAttribute("eventoDTO", dto);
+		return "evento_form";
+	}
+	
+	@PutMapping("/eventos/atualizar/{id}")
+	public String atualizarEvento(@ModelAttribute EventoDTO eventoDTO, @PathVariable Long id) {
+		eventoDTO.setId(id);
+		eventoService.salvarEvento(eventoDTO);
+		return "redirect:/eventos";
+	}
+	
+	@DeleteMapping("/eventos/excluir/{id}")
+	public String excluirEvento(@PathVariable Long id) {
+		eventoService.excluirEvento(id);
+		return "redirect:/eventos";
+	}
 }
-/*
-- GET /eventos → listar todos os eventos
-- GET /eventos/{id} → buscar evento por ID
-- PUT /eventos/{id} → atualizar informações do evento
-- DELETE /eventos/{id} → excluir evento
- */

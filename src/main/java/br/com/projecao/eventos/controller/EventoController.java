@@ -13,22 +13,26 @@ import org.springframework.web.bind.annotation.PutMapping;
 import br.com.projecao.eventos.dto.EventoDTO;
 import br.com.projecao.eventos.service.EventoService;
 import br.com.projecao.eventos.service.LocalService;
+import br.com.projecao.eventos.service.ParticipanteService;
 import jakarta.validation.Valid;
 
 @Controller
 public class EventoController {
 	private final EventoService eventoService;
 	private final LocalService localService;
+	private final ParticipanteService participanteService;
 	
-	public EventoController(EventoService eventoService, LocalService localService) {
+	public EventoController(EventoService eventoService, LocalService localService, ParticipanteService participanteService) {
 		this.eventoService = eventoService;
 		this.localService = localService;
+		this.participanteService = participanteService;
 	}
 
 	@GetMapping("/cadastrar/evento")
 	public String formulario(Model model) {
 		model.addAttribute("eventoDTO", new EventoDTO());
 		model.addAttribute("locais", localService.listarLocais());
+		model.addAttribute("participantes", participanteService.listarParticipantes());
 		return "evento_form";
 	}
 	
@@ -57,6 +61,7 @@ public class EventoController {
 		EventoDTO dto = eventoService.buscarPorId(id);
 		model.addAttribute("eventoDTO", dto);
 		model.addAttribute("locais", localService.listarLocais());
+		model.addAttribute("participantes", participanteService.listarParticipantes());
 		return "evento_form";
 	}
 	

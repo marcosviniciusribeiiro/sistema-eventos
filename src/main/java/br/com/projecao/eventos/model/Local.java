@@ -1,10 +1,14 @@
 package br.com.projecao.eventos.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -23,7 +27,8 @@ public class Local {
 	@Column(nullable = false)
 	private Integer capacidade;
 
-	// Eventos -> relacionamento OneToMany
+	@OneToMany(mappedBy = "local")
+	private List<Evento> eventos_local = new ArrayList<Evento>();
 	
 	public Long getId() {
 		return id;
@@ -55,5 +60,13 @@ public class Local {
 
 	public void setCapacidade(Integer capacidade) {
 		this.capacidade = capacidade;
+	}
+
+	public List<Evento> getEventos_local() {
+		return eventos_local;
+	}
+
+	public void setEventos_local(List<Evento> eventos_local) {
+		this.eventos_local = eventos_local;
 	}
 }

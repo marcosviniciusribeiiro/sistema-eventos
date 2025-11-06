@@ -1,5 +1,8 @@
 package br.com.projecao.eventos.dto;
 
+import java.util.List;
+
+import br.com.projecao.eventos.model.Evento;
 import jakarta.validation.constraints.NotBlank;
 
 public class LocalDTO {
@@ -13,6 +16,8 @@ public class LocalDTO {
 	
 	private Integer capacidade;
 
+	private List<Evento> eventos;
+	
 	public Long getId() {
 		return id;
 	}
@@ -43,5 +48,13 @@ public class LocalDTO {
 
 	public void setCapacidade(Integer capacidade) {
 		this.capacidade = capacidade;
+	}
+
+	public List<Evento> getEventos() {
+		return eventos;
+	}
+
+	public void setEventos(List<Evento> eventos) {
+		this.eventos = eventos;
 	}
 }

@@ -12,27 +12,36 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 import br.com.projecao.eventos.dto.EventoDTO;
 import br.com.projecao.eventos.service.EventoService;
+import br.com.projecao.eventos.service.LocalService;
 import jakarta.validation.Valid;
 
 @Controller
 public class EventoController {
 	private final EventoService eventoService;
+	private final LocalService localService;
 	
-	public EventoController(EventoService eventoService) {
+	public EventoController(EventoService eventoService, LocalService localService) {
 		this.eventoService = eventoService;
+		this.localService = localService;
 	}
 
 	@GetMapping("/cadastrar/evento")
 	public String formulario(Model model) {
 		model.addAttribute("eventoDTO", new EventoDTO());
+		model.addAttribute("locais", localService.listarLocais());
 		return "evento_form";
 	}
 	
 	@PostMapping("/cadastrar/evento")
 	public String cadastrarEvento(@ModelAttribute("eventoDTO") @Valid EventoDTO eventoDTO, BindingResult result) {
+		if(eventoDTO.getLocalId() == null) {
+			result.rejectValue("localId", null, "O local é obrigatório!");
+		}
+		
 		if(result.hasErrors()) {
 			return "evento_form";
 		}
+		
 		eventoService.salvarEvento(eventoDTO);
 		return "redirect:/cadastrar/evento";
 	}
@@ -47,6 +56,7 @@ public class EventoController {
 	public String editarEvento(@PathVariable Long id, Model model) {
 		EventoDTO dto = eventoService.buscarPorId(id);
 		model.addAttribute("eventoDTO", dto);
+		model.addAttribute("locais", localService.listarLocais());
 		return "evento_form";
 	}
 	

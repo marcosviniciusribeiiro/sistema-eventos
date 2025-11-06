@@ -24,6 +24,12 @@
 			<input type="datetime-local" th:field="*{data}" class="form-control" required />
 			<div class="text-danger" th:if="${#fields.hasErrors('data')}" th:errors="*{data}">Erro</div> <br>
 			
+			<label for="local" class="form-label">Local:</label>
+			<select th:field="*{localId}" class="form-select" required>
+				<option value="">Selecione o local do evento</option>
+				<option th:each="local : ${locais}" th:value="${local.id}" th:text="${local.nome}"></option>
+			</select> <br><br>
+			
 			<div class="row container text-center">
 				<div class="col-6">
 					<button type="submit" class="btn btn-success sm-4" th:text="${eventoDTO.id} != null ? 'Salvar Alterações' : 'Cadastrar'"></button>

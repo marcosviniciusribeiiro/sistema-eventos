@@ -28,4 +28,8 @@ public class LocalService {
 							  .map(LocalMapper::toDTO)
 							  .toList();
 	}
+	
+	public Local buscarEntidadePorId(Long id) {
+		return localRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Local não encontrado: " + id));
+	}
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlsn:th="https://www.thymeleaf.org" lang="pt-br">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Sistema de Eventos</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+	</head>
+	<body class="mt-5">
+		<h2 class="container text-center">Lista de Funcionalidades</h2>
+		<div class="row">
+			<div class="col-6 container text-center">
+				<h5 class="mt-3 mb-3">Eventos:</h5>
+				<a th:href="@{/eventos}" class="btn btn-primary">Lista de Eventos</a>
+			</div>
+			<div class="col-6 container text-center">
+				<h5 class="mt-3 mb-3">Cadastrar um Novo Evento:</h5>
+				<a th:href="@{/cadastrar/evento}" class="btn btn-success">Novo Evento</a>
+			</div>
+		</div> <br><br>
+		<div class="row">
+			<div class="col-6 container text-center">
+				<h5 class="mt-3 mb-3">Locais:</h5>
+				<a th:href="@{/locais}" class="btn btn-outline-primary">Lista de Locais</a>
+			</div>
+			<div class="col-6 container text-center">
+				<h5 class="mt-3 mb-3">Cadastrar um Novo Local:</h5>
+				<a th:href="@{/cadastrar/local}" class="btn btn-outline-success">Novo Local</a>
+			</div>
+		</div> <br><br>
+		<div class="row">
+			<div class="col-6 container text-center">
+				<h5 class="mt-3 mb-3">Participantes:</h5>
+				<a th:href="@{/participantes}" class="btn btn-dark">Lista de Participantes</a>
+			</div>
+			<div class="col-6 container text-center">
+				<h5 class="mt-3 mb-3">Cadastrar uma Novo Participante:</h5>
+				<a th:href="@{/cadastrar/rarticipante}" class="btn btn-secondary">Novo Participante</a>
+			</div>
+		</div>
+	</body>
+</html>

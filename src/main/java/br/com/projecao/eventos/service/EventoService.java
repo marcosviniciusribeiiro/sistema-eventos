@@ -8,20 +8,26 @@ import br.com.projecao.eventos.dto.EventoDTO;
 import br.com.projecao.eventos.mapper.EventoMapper;
 import br.com.projecao.eventos.model.Evento;
 import br.com.projecao.eventos.model.Local;
+import br.com.projecao.eventos.model.Participante;
 import br.com.projecao.eventos.repository.EventoRepository;
+import br.com.projecao.eventos.repository.ParticipanteRepository;
 
 @Service
 public class EventoService {
 	private final EventoRepository eventoRepository;
 	private final LocalService localService;
+	private final ParticipanteRepository participanteRepository;
 	
-	public EventoService(EventoRepository eventoRepository, LocalService localService) {
+	public EventoService(EventoRepository eventoRepository, LocalService localService, ParticipanteRepository participanteRepository) {
 		this.eventoRepository = eventoRepository;
 		this.localService = localService;
+		this.participanteRepository = participanteRepository;
 	}
 	
 	public void salvarEvento(EventoDTO dto) {
-		Evento evento = EventoMapper.toEntity(dto);
+		List<Participante> participantes = participanteRepository.findAllById(dto.getParticipantesIds());
+		Evento evento = EventoMapper.toEntity(dto, participantes);
+		eventoRepository.save(evento);
 		Local local = localService.buscarEntidadePorId(dto.getLocalId());
 		
 		evento.setLocal(local);

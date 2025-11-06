@@ -18,6 +18,9 @@
 				<td th:text="${participante.nome}"></td>
 				<td th:text="${participante.email}"></td>
 			</tbody>
-		</table>
+		</table> <br>
+		<div class="container text-center">
+			<a th:href="@{/cadastrar/participante}" class="btn btn-primary sm-4">Novo Participante</a>
+		</div>
 	</body>
 </html>

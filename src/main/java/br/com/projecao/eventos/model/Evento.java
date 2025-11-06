@@ -1,6 +1,8 @@
 package br.com.projecao.eventos.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -10,6 +12,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -29,9 +35,15 @@ public class Evento {
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime data;
 
-	//Local -> ManyToOne
+	@ManyToOne
+	@JoinColumn(name = "local_id")
+	private Local local;
 	
-	//Participantes -> ManyToMany
+	@ManyToMany
+	@JoinTable(name = "evento_participante",
+			joinColumns = @JoinColumn(name = "evento_id"),
+			inverseJoinColumns = @JoinColumn(name = "participante_id"))
+	private List<Participante> participantes = new ArrayList<Participante>();
 	
 	public Long getId() {
 		return id;
@@ -63,5 +75,21 @@ public class Evento {
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
-	}	
+	}
+
+	public Local getLocal() {
+		return local;
+	}
+
+	public void setLocal(Local local) {
+		this.local = local;
+	}
+	
+	public List<Participante> getParticipantes() {
+		return participantes;
+	}
+
+	public void setParticipantes(List<Participante> participantes) {
+		this.participantes = participantes;
+	}
 }

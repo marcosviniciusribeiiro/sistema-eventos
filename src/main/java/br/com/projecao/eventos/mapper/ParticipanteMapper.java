@@ -9,6 +9,7 @@ public class ParticipanteMapper {
 		participante.setId(dto.getId());
 		participante.setNome(dto.getNome());
 		participante.setEmail(dto.getEmail());
+		participante.setEventos(dto.getEventos());
 		return participante;
 	}
 	
@@ -17,6 +18,7 @@ public class ParticipanteMapper {
 		dto.setId(participante.getId());
 		dto.setNome(participante.getNome());
 		dto.setEmail(participante.getEmail());
+		dto.setEventos(participante.getEventos());
 		return dto;
 	}
 }

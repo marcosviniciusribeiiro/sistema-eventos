@@ -1,6 +1,7 @@
 package br.com.projecao.eventos.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.validation.constraints.NotBlank;
 
@@ -14,7 +15,13 @@ public class EventoDTO {
 	private String descricao;
 	
 	private LocalDateTime data;
+	
+	private Long localId;
+	
+	private String localNome;
 
+	private List<Long> participantesIds;
+	
 	public Long getId() {
 		return id;
 	}
@@ -45,5 +52,29 @@ public class EventoDTO {
 
 	public void setData(LocalDateTime data) {
 		this.data = data;
+	}
+
+	public Long getLocalId() {
+		return localId;
+	}
+
+	public void setLocalId(Long localId) {
+		this.localId = localId;
+	}
+
+	public String getLocalNome() {
+		return localNome;
+	}
+
+	public void setLocalNome(String localNome) {
+		this.localNome = localNome;
+	}
+
+	public List<Long> getParticipantesIds() {
+		return participantesIds;
+	}
+
+	public void setParticipantesIds(List<Long> participantesIds) {
+		this.participantesIds = participantesIds;
 	}
 }

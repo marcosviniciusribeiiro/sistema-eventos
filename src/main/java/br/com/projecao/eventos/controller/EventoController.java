@@ -27,6 +27,11 @@ public class EventoController {
 		this.localService = localService;
 		this.participanteService = participanteService;
 	}
+	
+	@GetMapping("/sistema/eventos")
+	public String sistema() {
+		return "index";
+	}
 
 	@GetMapping("/cadastrar/evento")
 	public String formulario(Model model) {

@@ -10,6 +10,7 @@ public class LocalMapper {
 		local.setNome(dto.getNome());
 		local.setEndereco(dto.getEndereco());
 		local.setCapacidade(dto.getCapacidade());
+		local.setEventos_local(dto.getEventos());
 		return local;
 	}
 	
@@ -19,6 +20,7 @@ public class LocalMapper {
 		dto.setNome(local.getNome());
 		dto.setEndereco(local.getEndereco());
 		dto.setCapacidade(local.getCapacidade());
+		dto.setEventos(local.getEventos_local());
 		return dto;
 	}
 }

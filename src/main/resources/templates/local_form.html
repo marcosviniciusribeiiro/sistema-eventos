@@ -20,7 +20,7 @@
 			<div class="text-danger" th:if="${#fields.hasErrors('endereco')}" th:errors="*{endereco}">Erro</div> <br>			
 			
 			<label for="capacidade" class="form-label">Capacidade:</label>
-			<input type="number" th:field="*{capacidade}" class="form-control" min="50" required/>
+			<input type="number" th:field="*{capacidade}" class="form-control" min="30" required/>
 			<div class="text-danger" th:if="${#fields.hasErrors('capacidade')}" th:errors="*{capacidade}">Erro</div> <br>	
 			
 			<div class="row container text-center">

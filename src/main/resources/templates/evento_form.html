@@ -28,7 +28,14 @@
 			<select th:field="*{localId}" class="form-select" required>
 				<option value="">Selecione o local do evento</option>
 				<option th:each="local : ${locais}" th:value="${local.id}" th:text="${local.nome}"></option>
-			</select> <br><br>
+			</select> <br>
+			
+			<label for="participantes" class="form-label">Participantes:</label>
+			<select th:field="*{participantesIds}" class="form-select" multiple required>
+				<option value="">Selecione os participantes do evento</option>
+				<option th:each="participante : ${participantes}" th:value="${participante.id}" th:text="${participante.email}"></option> 
+			</select>
+			<small class="text-muted">Use Ctrl (ou Cmd) para selecionar multiplos participantes</small> <br><br>
 			
 			<div class="row container text-center">
 				<div class="col-6">

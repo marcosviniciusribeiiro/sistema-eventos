@@ -19,6 +19,8 @@ public class EventoDTO {
 	private Long localId;
 	
 	private String localNome;
+	
+	private Integer localCapacidade;
 
 	private List<Long> participantesIds;
 	
@@ -76,5 +78,13 @@ public class EventoDTO {
 
 	public void setParticipantesIds(List<Long> participantesIds) {
 		this.participantesIds = participantesIds;
+	}
+
+	public Integer getLocalCapacidade() {
+		return localCapacidade;
+	}
+
+	public void setLocalCapacidade(Integer localCapacidade) {
+		this.localCapacidade = localCapacidade;
 	}
 }

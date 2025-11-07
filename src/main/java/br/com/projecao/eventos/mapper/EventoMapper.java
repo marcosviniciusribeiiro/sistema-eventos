@@ -26,6 +26,7 @@ public class EventoMapper {
 		if(evento.getLocal() != null) {
 			dto.setLocalId(evento.getLocal().getId());
 			dto.setLocalNome(evento.getLocal().getNome());
+			dto.setLocalCapacidade(evento.getLocal().getCapacidade());
 		}
 		return dto;
 	}
